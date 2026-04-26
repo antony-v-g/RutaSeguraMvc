@@ -1,8 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "RutaSegura";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+    <h1 class="display-4">RutaSegura</h1>
+    <p class="lead">Sistema para reportes, rutas seguras y gestión de alertas.</p>
+
+    <a class="btn btn-primary" asp-controller="Reportes" asp-action="Index">
+        Ver reportes
+    </a>
+
+    <a class="btn btn-outline-secondary" asp-controller="Contactos" asp-action="Index">
+        Contactos
+    </a>
 </div>
