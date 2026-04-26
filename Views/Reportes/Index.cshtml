@@ -1,0 +1,29 @@
+@model IEnumerable<RutaSeguraMvc.Models.Reporte>
+
+<h2>Reportes</h2>
+
+<a class="btn btn-primary mb-3" asp-action="Create">Nuevo reporte</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Ubicación</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reporte in Model)
+        {
+            <tr>
+                <td>@reporte.TipoIncidente</td>
+                <td>@reporte.Descripcion</td>
+                <td>@reporte.Ubicacion</td>
+                <td>@reporte.Estado</td>
+                <td>@reporte.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
