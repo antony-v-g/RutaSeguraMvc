@@ -1,0 +1,22 @@
+@model RutaSeguraMvc.Models.Reporte
+
+<h2>Nuevo reporte</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="TipoIncidente"></label>
+        <input asp-for="TipoIncidente" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Descripcion"></label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Ubicacion"></label>
+        <input asp-for="Ubicacion" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
