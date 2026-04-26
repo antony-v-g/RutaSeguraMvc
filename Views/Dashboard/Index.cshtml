@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Panel principal";
+}
+
+<section class="dashboard-hero">
+    <div>
+        <span class="badge">RutaSegura</span>
+        <h1>Bienvenido al panel principal</h1>
+        <p>Gestiona reportes, contactos, catálogo y sesiones desde una sola plataforma.</p>
+    </div>
+</section>
+
+<section class="dashboard-grid">
+    <a class="module-card" asp-controller="Reportes" asp-action="Index">
+        <h3>Reportes</h3>
+        <p>Registrar y consultar incidentes.</p>
+    </a>
+
+    <a class="module-card" asp-controller="Contactos" asp-action="Index">
+        <h3>Contactos</h3>
+        <p>Gestionar contactos de emergencia.</p>
+    </a>
+
+    <a class="module-card" asp-controller="Catalogos" asp-action="Index">
+        <h3>Catálogo</h3>
+        <p>Administrar datos base del sistema.</p>
+    </a>
+
+    <a class="module-card" asp-controller="Sesiones" asp-action="Index">
+        <h3>Sesiones</h3>
+        <p>Verificar manejo de sesiones.</p>
+    </a>
+</section>
