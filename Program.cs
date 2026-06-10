@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.SemanticKernel;
 using RutaSeguraMvc.Data;
+using RutaSeguraMvc.Services.AI;
+using RutaSeguraMvc.Services.Agents;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +23,38 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+// ============== AI Services Configuration ==============
+builder.Services.Configure<AiSettings>(builder.Configuration.GetSection("AiSettings"));
+
+// Register Semantic Kernel
+var aiSettings = builder.Configuration.GetSection("AiSettings").Get<AiSettings>()
+    ?? throw new InvalidOperationException("AiSettings configuration is missing");
+
+var kernelBuilder = Kernel.CreateBuilder();
+
+if (aiSettings.ApiType == "OpenAI")
+{
+    kernelBuilder.AddOpenAIChatCompletion(
+        modelId: aiSettings.ModelName,
+        apiKey: aiSettings.ApiKey);
+}
+else if (aiSettings.ApiType == "AzureOpenAI")
+{
+    kernelBuilder.AddAzureOpenAIChatCompletion(
+        deploymentName: aiSettings.DeploymentName,
+        endpoint: aiSettings.Endpoint,
+        apiKey: aiSettings.ApiKey);
+}
+
+var kernel = kernelBuilder.Build();
+builder.Services.AddSingleton(kernel);
+
+// Register AI Services
+builder.Services.AddScoped<ISemanticKernelService, SemanticKernelService>();
+builder.Services.AddScoped<IRouteAnalysisAgent, RouteAnalysisAgent>();
+builder.Services.AddScoped<ISafetyAssistantAgent, SafetyAssistantAgent>();
+builder.Services.AddScoped<IAiOrchestrator, AiOrchestrator>();
 
 var app = builder.Build();
 
