@@ -17,18 +17,18 @@ This project has been enhanced with **Semantic Kernel**, **LLM** (Large Language
 │      (Coordinates multiple agents)                       │
 └────────────────────────┬────────────────────────────────┘
                          │
-        ┌────────────────┼────────────────┐
-        │                │                │
-   ┌────▼──────┐   ┌────▼──────┐   ┌────▼──────┐
-   │   Route    │   │  Safety   │   │Semantic   │
-   │ Analysis   │   │ Assistant │   │  Kernel   │
-   │  Agent     │   │   Agent   │   │  Service  │
-   └───────────┘   └───────────┘   └────┬──────┘
-                                          │
-                                    ┌─────▼──────┐
-                                    │  LLM/AI    │
-                                    │  (OpenAI)  │
-                                    └────────────┘
+         ┌────────────────┼────────────────┐
+         │                │                │
+    ┌────▼──────┐   ┌────▼──────┐   ┌────▼──────┐
+    │   Route    │   │  Safety   │   │Semantic   │
+    │ Analysis   │   │ Assistant │   │  Kernel   │
+    │  Agent     │   │   Agent   │   │  Service  │
+    └───────────┘   └───────────┘   └────┬──────┘
+                                           │
+                                     ┌─────▼──────┐
+                                     │  LLM/AI    │
+                                     │  (OpenAI)  │
+                                     └────────────┘
 ```
 
 ## Components
